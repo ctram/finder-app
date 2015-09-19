@@ -17,6 +17,8 @@
 <hr>
 
 <div class='results-list'>
+  <ul id='list'>
+  </ul>
 </div>
 
 <div class='map'>
@@ -75,15 +77,26 @@
     });
   }
 
-  testAPIRequest2();
+  // testAPIRequest2();
   // testAPIRequest();
+  function renderResults (data) {
+    var businesses = data.businesses;
+    var business;
+    $list = $('#list');
+    for (var i = 0; i < businesses.length; i++) {
+      business = businesses[i];
+      $list.append("<li>" + business.name + "</li>");
+    }
 
+  }
 
-  // Consumer Key	W1BjNrPnZRlvG6kJaa3dQg
-  // Consumer Secret	OI7kyEW_uuVw5G3nZZodfY6BjqA
-  // Token	-eERvtTjNeTI4CbOblkP34eAii7JLLpr
-  // Token Secret	9EdVIozIGN_vVRoPTak84QPKxhQ
+  function getSearchResults () {
+    $.ajax({
+      url: '/search',
+      type: 'get',
+      success: renderResults
+    })
+  }
 
-
-
+  getSearchResults();
 </script>
