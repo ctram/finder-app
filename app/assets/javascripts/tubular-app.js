@@ -76,7 +76,6 @@ function renderResults (data) {
     long = business.location.coordinate.longitude;
     $list.append("<li><b>" + business.name + "</b> Lat: " + lat + "; Long: " + long + "</li>");
   }
-
 }
 
 function getSearchResults (query) {
@@ -86,7 +85,7 @@ function getSearchResults (query) {
     data: {query: query},
     success: renderResults,
     error: function () {
-      $('#list').html('Something went wrong with the search : [ <br><BR>Please try again!')
+      $('#list').html('Something went wrong with the search : [ <BR><BR>Please try again!')
     }
   });
 }
