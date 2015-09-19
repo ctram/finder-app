@@ -1,6 +1,23 @@
 # README
 This is a basic app built to explore Angular's functionality.
 
+### Installing and Running
+
+- Clone this app.
+- Change directory into the app folder
+- Run ```bundle install```
+- Run ```rails server```
+- The app can be viewed within a web browser at ```http://localhost:3000```
+
+### Tools used:
+- Google Maps API,
+- Yelp API
+- Angular.js
+- Bootstrap (Bootswatch)
+- a bit of jQuery
+- Rails back end (responsible for contacting Yelp API and returning JSON back to the client)
+- yelp-ruby gem, for convenient sending of search queries to yelp's API.
+
 ### Core features:
 - Integration with Google maps for displaying location of search results.
 - Integration with Yelp for business search results.
@@ -17,20 +34,3 @@ This is a basic app built to explore Angular's functionality.
 - Clicking on a marker centers the map over the marker.
 - Hovering cursor over the marker presents a pop with more detailed info of the business.
 - Intelligent zooming based on markers on the map.
-
-### Tools used:
-- Google Maps API,
-- Yelp API
-- Angular.js
-- Bootstrap (Bootswatch)
-- a bit of jQuery
-- Rails back end (responsible for contacting Yelp API and returning JSON back to the client)
-- yelp-ruby gem, for convenient sending of search queries to yelp's API.
-
-### Installing and Running
-
-- Clone this app.
-- Change directory into the app folder
-- Run ```bundle install```
-- Run ```rails server```
-- The app can be viewed within a web browser at ```http://localhost:3000```
