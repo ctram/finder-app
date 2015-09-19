@@ -2,8 +2,7 @@ var resultsList
 var finderApp = angular.module('finderApp', []);
 
 finderApp.controller('ResultsListController', ['$scope', '$http', function ($scope, $http) {
-  var sampleResult = {name: 'asd', location: {coordinate: {latitude: 'asd', longitude: 'asd'}}};
-  $scope.results = [sampleResult];
+  $scope.results = [];
 
   $scope.submitSearch = function () {
     var query = $('#input-box').val();
