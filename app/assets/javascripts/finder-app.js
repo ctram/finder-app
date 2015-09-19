@@ -105,10 +105,15 @@ function findCenterOfResults (businesses) {
 }
 
 function repositionMap (coordinate) {
-
-
-  // map.center = coordinate;
   map.panTo(coordinate)
+}
+
+function startMarkerBounce (marker) {
+  marker.setAnimation(google.maps.Animation.BOUNCE);
+}
+
+function stopMarkerBounce (marker) {
+  marker.setAnimation(null);
 }
 
 $(document).ready(function () {

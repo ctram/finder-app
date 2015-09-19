@@ -24,17 +24,4 @@ class StaticPagesController < ApplicationController
 
     render json: response.to_json
   end
-
-  def location_to_geocode
-    search_location = params[:search_location]
-
-    gmaps_api_url = "https://maps.googleapis.com/maps/api/geocode/json?address="
-
-    search_location = search_location.split.join('+')
-    complete_url = gmaps_api_url + search_location + '&key=' + api_key
-    uri = URI(complete_url)
-    response = JSON.parse(Net::HTTP.get(uri))
-    render json: response
-  end
-
 end
