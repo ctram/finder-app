@@ -38,9 +38,10 @@ finderApp.controller('ResultsListController', ['$scope', '$http', function ($sco
 
     responsePromise.error(function (response) {
       $scope.results = [];
-      $('#list').html('Sorry, something went wrong with the search');
+      $('#list').html('Sorry, something went wrong with the search or there were no relevant results');
     });
   };
+
 
   $scope.startMarkerBounce = function () {
     var $business = $(event.currentTarget);
