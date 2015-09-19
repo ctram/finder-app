@@ -1,4 +1,7 @@
-var resultsList
+// TODO: search results are confined to the CURRENT location of the map
+// TODO: map re-positions itself to best showcase the results - how can BOTH of these be done simultaneously?
+// TODO: add separate input field for location, like how Yelp is setup
+
 var finderApp = angular.module('finderApp', []);
 
 finderApp.controller('ResultsListController', ['$scope', '$http', function ($scope, $http) {
