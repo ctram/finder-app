@@ -19,7 +19,10 @@ finderApp.controller('ResultsListController', ['$scope', '$http', function ($sco
     if (query === undefined) {
       query = 'San+Francisco';
     }
-    var responsePromise = $http.get('/search?query=' + query);
+
+    var nearbyCoor = {lat: 0, lng: 0};
+    
+    var responsePromise = $http.get('/search?query=' + query + '&nearbyCoor=' + nearbyCoor.lat + ',' + nearbyCoor.lng);
     responsePromise.success(function (response) {
       $scope.results = response.businesses;
       clearMarkers();
