@@ -9,13 +9,16 @@
       <br><br>
       <input type='submit' value='Go!' class='btn btn-primary'>
     </form>
-  </div>
 
-  <hr>
+    <hr>
 
-  <div class='list-wrapper'>
-    <ul id='list'>
-    </ul>
+    <div class='list-wrapper'>
+      <ul id='list'>
+        <li ng-repeat='result in resultsList.results'>
+          <b>{{result.name}}</b> Lat: {{result.location.coordinate.latitude}} Long: {{result.location.coordinate.longitude}}
+        </li>
+      </ul>
+    </div>
   </div>
 
   <div id='map'>

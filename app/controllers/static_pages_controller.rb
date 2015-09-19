@@ -15,7 +15,7 @@ class StaticPagesController < ApplicationController
       token: '-eERvtTjNeTI4CbOblkP34eAii7JLLpr',
       token_secret: '9EdVIozIGN_vVRoPTak84QPKxhQ'
     })
-
+    
     if params[:query].nil?
       response = client.search('San Francisco')
     else
