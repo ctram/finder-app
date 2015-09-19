@@ -2,7 +2,7 @@
   <h1>The Finder-er App!</h1>
 
   <div ng-controller='ResultsListController as resultsList'>
-    <form ng-submit='resultsList.submitSearch()'>
+    <form ng-submit='submitSearch()'>
       Please type in a location or interest:
       <br><br>
       <input type='text' placeholder='Mountain View, Pekingese Puppies, Spelunking...' id='input-box'>
@@ -14,7 +14,7 @@
 
     <div class='list-wrapper'>
       <ul id='list'>
-        <li ng-repeat='result in resultsList.results'>
+        <li ng-repeat='result in results'>
           <b>{{result.name}}</b> Lat: {{result.location.coordinate.latitude}} Long: {{result.location.coordinate.longitude}}
         </li>
       </ul>
