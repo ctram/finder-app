@@ -5,10 +5,18 @@
 var finderApp = angular.module('finderApp', []);
 
 finderApp.controller('ResultsListController', ['$scope', '$http', function ($scope, $http) {
-  $scope.results = [];
+  var searchInMap = false;
+
+  $scope.results = []; // To hold business results sourced from Yelp API
+
+  // Bound to "Search Within Map" checkbox
+  $scope.searchInMap = {
+    value: false
+  }
 
   $scope.submitSearch = function () {
-    var query = $('#input-box').val();
+
+    var query = $('#input-box').val(); // TODO: switch out jQuery call with better use of directive
     if (query !== '') {
       $scope.getSearchResults(query);
     }
@@ -20,13 +28,13 @@ finderApp.controller('ResultsListController', ['$scope', '$http', function ($sco
       query = 'San+Francisco';
     }
 
-    var cur_viewport_coor = {lat: map.center.H, lng: map.center.L}
+    var fragmentLocationQuery = ''; // Location search is bound to; Defaults to empty string, i.e. search will NOT be bound to a location by default
+    if ($scope.searchInMap.value) {
+      var curViewportCoor = {lat: map.center.H, lng: map.center.L};
+      fragmentLocationQuery = "&nearbyCoor=" + curViewportCoor.lat + ',' + curViewportCoor.lng
+    }
 
-    // 
-    // var nearbyCoor = {lat: 0, lng: 0};
-    // var nearbyCoor = {lat: 0, lng: 0};
-
-    var responsePromise = $http.get('/search?query=' + query + '&nearbyCoor=' + cur_viewport_coor.lat + ',' + cur_viewport_coor.lng);
+    var responsePromise = $http.get('/search?query=' + query + fragmentLocationQuery);
     responsePromise.success(function (response) {
       $scope.results = response.businesses;
       clearMarkers();
@@ -62,6 +70,11 @@ finderApp.controller('ResultsListController', ['$scope', '$http', function ($sco
         return
       }
     }
+  }
+
+  $scope.setSearchInMap = function () {
+
+    searchInMap = ! searchInMap;
   }
 }]);
 
