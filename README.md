@@ -33,4 +33,4 @@ This is a basic app built to explore Angular's functionality.
 - Change directory into the app folder
 - Run ```bundle install```
 - Run ```rails server```
-- The app can be viewed at within a web browser at ```http://localhost:3000```
+- The app can be viewed within a web browser at ```http://localhost:3000```
