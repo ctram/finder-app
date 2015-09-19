@@ -20,6 +20,7 @@ finderApp.controller('ResultsListController', ['$scope', '$http', function ($sco
     var responsePromise = $http.get('/search?query=' + query);
     responsePromise.success(function (response) {
       $scope.results = response.businesses;
+      clearMarkers();
       addMarkers($scope.results);
     });
     responsePromise.error(function (response) {
@@ -29,23 +30,6 @@ finderApp.controller('ResultsListController', ['$scope', '$http', function ($sco
   };
 
 }]);
-
-function testMarker () {
-  // Test addition of marker onto map
-  // 37.379365 Long: -122.07255
-
-  var lat = 37.379365
-  var long = -122.07255
-  var name = 'Some place'
-
-  var marker = new google.maps.Marker({
-    position: { lat: lat, lng: long },
-    map: map,
-    title: name
-  });
-
-  markers.push(marker);
-}
 
 var map;
 var markers = [];
@@ -58,7 +42,7 @@ function initMap() {
 }
 
 function addMarker (business) {
-  debugger
+
   var lat = business.location.coordinate.latitude;
   var long = business.location.coordinate.longitude;
   var name = business.name;
@@ -80,7 +64,13 @@ function addMarkers (businesses) {
   }
 }
 
+function clearMarkers () {
+  var marker;
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+  }
+}
+
 $(document).ready(function () {
   initMap();
-  testMarker();
 });
