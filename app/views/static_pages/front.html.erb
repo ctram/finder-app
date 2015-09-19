@@ -2,33 +2,21 @@
 
 <form>
   Please type in a location or interest:
-
   <br><br>
-
-
   <input type='text' placeholder='Mountain View, Pekingese Puppies, Spelunking...' id='input-box'>
-
   <br><br>
-
   <input type='submit' value='Go!' class='btn btn-primary'>
-
 </form>
 
 <hr>
 
-<div class='results-list'>
+<div class='list-wrapper'>
   <ul id='list'>
   </ul>
 </div>
 
-<div class='map'>
+<div id='map'>
 </div>
-
-
-<div id='test'>
-</div>
-
-
 
 <script>
   var oauth = OAuth({
@@ -99,4 +87,15 @@
   }
 
   getSearchResults();
+
+  var map;
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 8
+    });
+  }
+
+  initMap();
+
 </script>

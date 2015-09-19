@@ -23,3 +23,11 @@
  #input-box {
    min-width: 500px;
  }
+
+#map {
+  min-width: 800px;
+  min-height: 600px;
+  position: absolute;
+  right: 0;
+  top: 200px;
+}
