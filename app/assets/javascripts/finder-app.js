@@ -1,5 +1,4 @@
 // TODO: add separate input field for location, like how Yelp is setup
-
 var finderApp = angular.module('finderApp', []);
 
 finderApp.controller('ResultsListController', ['$scope', '$http', function ($scope, $http) {
@@ -12,14 +11,6 @@ finderApp.controller('ResultsListController', ['$scope', '$http', function ($sco
     value: false
   }
 
-  $scope.submitSearch = function () {
-
-    var query = $('#input-box').val(); // TODO: switch out jQuery call with better use of directive
-    if (query !== '') {
-      $scope.getSearchResults(query);
-    }
-  };
-
   $scope.getSearchResults = function (query) {
     // Default query
     if (query === undefined) {
@@ -27,12 +18,15 @@ finderApp.controller('ResultsListController', ['$scope', '$http', function ($sco
     }
 
     var fragmentLocationQuery = ''; // Location search is bound to; Defaults to empty string, i.e. search will NOT be bound to a location by default
+
+    // If user wants to restrict search within the map...
     if ($scope.searchInMap.value) {
       var curViewportCoor = {lat: map.center.H, lng: map.center.L};
       fragmentLocationQuery = "&nearbyCoor=" + curViewportCoor.lat + ',' + curViewportCoor.lng
     }
 
     var responsePromise = $http.get('/search?query=' + query + fragmentLocationQuery);
+
     responsePromise.success(function (response) {
       $scope.results = response.businesses;
       clearMarkers();
@@ -41,6 +35,7 @@ finderApp.controller('ResultsListController', ['$scope', '$http', function ($sco
 
       repositionMap(ctrOfResults);
     });
+
     responsePromise.error(function (response) {
       $scope.results = [];
       $('#list').html('Sorry, something went wrong with the search');
@@ -50,6 +45,7 @@ finderApp.controller('ResultsListController', ['$scope', '$http', function ($sco
   $scope.startMarkerBounce = function () {
     var $business = $(event.currentTarget);
     var name = $business.data('name');
+
     // HACK: must be a better way than iterating through all the markers to find the right one - check API or put markers into a hash
     for (var i = 0; i < markers.length; i++) {
       if (markers[i].title === name) {
@@ -70,10 +66,12 @@ finderApp.controller('ResultsListController', ['$scope', '$http', function ($sco
     }
   }
 
-  $scope.setSearchInMap = function () {
-
-    searchInMap = ! searchInMap;
-  }
+  $scope.submitSearch = function () {
+    var query = $('#input-box').val(); // TODO: switch out jQuery call with better use of directive
+    if (query !== '') {
+      $scope.getSearchResults(query);
+    }
+  };
 }]);
 
 var map;
@@ -87,7 +85,6 @@ function initMap() {
 }
 
 function addMarker (business) {
-
   var lat = business.location.coordinate.latitude;
   var long = business.location.coordinate.longitude;
   var name = business.name;
