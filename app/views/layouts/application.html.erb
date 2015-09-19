@@ -2,14 +2,18 @@
 <html>
 <head>
   <title>TubularApp</title>
+
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.js'></script>
+  <!-- TODO: hard code key in for now, need to remove for production -->
+  <script type="text/javascript"                                      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeFDbJUJtdii9HUCJD4SLa852Zbij9BzY"></script>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
   <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 
-  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.js'></script>
-
+  <!-- REMOVE ------------------------------------------------------------ -->
   <!-- TODO: probably remove the JS oauth library, going with the Ruby gem instead -->
   <!-- oauth library -->
   <!-- sha1 -->
@@ -17,11 +21,6 @@
   <!-- sha256 -->
   <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/hmac-sha256.js"></script>
   <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-base64-min.js"></script>
-
-
-  <!-- TODO: hard code key in for now, need to remove for production -->
-  <script type="text/javascript"                                      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeFDbJUJtdii9HUCJD4SLa852Zbij9BzY"></script>
-
 </head>
 <body>
 
