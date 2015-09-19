@@ -20,9 +20,13 @@ finderApp.controller('ResultsListController', ['$scope', '$http', function ($sco
       query = 'San+Francisco';
     }
 
-    var nearbyCoor = {lat: 0, lng: 0};
-    
-    var responsePromise = $http.get('/search?query=' + query + '&nearbyCoor=' + nearbyCoor.lat + ',' + nearbyCoor.lng);
+    var cur_viewport_coor = {lat: map.center.H, lng: map.center.L}
+
+    // 
+    // var nearbyCoor = {lat: 0, lng: 0};
+    // var nearbyCoor = {lat: 0, lng: 0};
+
+    var responsePromise = $http.get('/search?query=' + query + '&nearbyCoor=' + cur_viewport_coor.lat + ',' + cur_viewport_coor.lng);
     responsePromise.success(function (response) {
       $scope.results = response.businesses;
       clearMarkers();

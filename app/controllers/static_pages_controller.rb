@@ -15,7 +15,7 @@ class StaticPagesController < ApplicationController
       token: '-eERvtTjNeTI4CbOblkP34eAii7JLLpr',
       token_secret: '9EdVIozIGN_vVRoPTak84QPKxhQ'
     })
-    debugger
+
     if params[:query].nil?
       response = client.search('San Francisco')
     else
@@ -26,12 +26,13 @@ class StaticPagesController < ApplicationController
         }
 
         # 37.766606, -122.430713
-        sf_coor = {latitude: 37.766606, longitude: -122.430713}
+        # sf_coor = {latitude: 37.766606, longitude: -122.430713}
         arr_coor = params[:nearbyCoor].split(',')
-        lat = arr_coor.first
-        lng = arr_coor.last
+        lat = arr_coor.first.to_f
+        lng = arr_coor.last.to_f
+
         coordinates = {latitude: lat, longitude: lng}
-        response = client.search_by_coordinates(sf_coor, yelp_params)
+        response = client.search_by_coordinates(coordinates, yelp_params)
       else
         response = client.search(params[:query])
       end
