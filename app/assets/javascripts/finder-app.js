@@ -34,7 +34,27 @@ finderApp.controller('ResultsListController', ['$scope', '$http', function ($sco
     });
   };
 
+  $scope.startMarkerBounce = function () {
+    var $business = $(event.current_target);
+    var name = $business.data('name');
+    for (var i = 0; i < markers.length; i++) {
+      if (markers[i].name === name) {
+        markers[i].setAnimation(google.maps.Animation.BOUNCE);
+        return
+      }
+    }
+  }
 
+  $scope.stopMarkerBounce = function () {
+    var $business = $(event.current_target);
+    var name = $business.data('name');
+    for (var i = 0; i < markers.length; i++) {
+      if (markers[i].name === name) {
+        markers[i].setAnimation(null)
+        return
+      }
+    }
+  }
 }]);
 
 var map;
@@ -108,13 +128,9 @@ function repositionMap (coordinate) {
   map.panTo(coordinate)
 }
 
-function startMarkerBounce (marker) {
-  marker.setAnimation(google.maps.Animation.BOUNCE);
-}
 
-function stopMarkerBounce (marker) {
-  marker.setAnimation(null);
-}
+
+
 
 $(document).ready(function () {
   initMap();
