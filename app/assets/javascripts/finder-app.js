@@ -35,10 +35,11 @@ finderApp.controller('ResultsListController', ['$scope', '$http', function ($sco
   };
 
   $scope.startMarkerBounce = function () {
-    var $business = $(event.current_target);
+    var $business = $(event.currentTarget);
     var name = $business.data('name');
+    // HACK: must be a better way than iterating through all the markers to find the right one - check API or put markers into a hash
     for (var i = 0; i < markers.length; i++) {
-      if (markers[i].name === name) {
+      if (markers[i].title === name) {
         markers[i].setAnimation(google.maps.Animation.BOUNCE);
         return
       }
@@ -46,10 +47,10 @@ finderApp.controller('ResultsListController', ['$scope', '$http', function ($sco
   }
 
   $scope.stopMarkerBounce = function () {
-    var $business = $(event.current_target);
+    var $business = $(event.currentTarget);
     var name = $business.data('name');
     for (var i = 0; i < markers.length; i++) {
-      if (markers[i].name === name) {
+      if (markers[i].title === name) {
         markers[i].setAnimation(null)
         return
       }

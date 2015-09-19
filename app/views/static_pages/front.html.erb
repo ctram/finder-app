@@ -15,7 +15,7 @@
     <div class='list-wrapper'>
       <h3>Results</h3>
       <ul id='list'>
-        <li ng-repeat='result in results' ng-mouseover='startMarkerBounce()' ng-mouseleave='stopBounce()' data-name='{{result.name}}'>
+        <li ng-repeat='result in results' ng-mouseover='startMarkerBounce()' ng-mouseleave='stopMarkerBounce()' data-name='{{result.name}}'>
           <b>{{result.name}}</b> Lat: {{result.location.coordinate.latitude}} Long: {{result.location.coordinate.longitude}}
         </li>
       </ul>
