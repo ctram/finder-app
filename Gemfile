@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'yelp', require: 'yelp'
 
+gem 'sqlite3'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use SCSS for stylesheets
