@@ -3,14 +3,16 @@
 
   <div ng-controller='ResultsListController as resultsList'>
     <form ng-submit='submitSearch()'>
-      Please type in a location or topic of interest:
-      <br><br>
-      <input type='text' placeholder='Mountain View, Pekingese Puppies, Spelunking...' id='input-box'>
-      <br><br>
-      <input type='submit' value='Go!' class='btn btn-primary'>
+      <div class='center-wrapper'>
+        Please type in a location or topic of interest:
+        <br><br>
+        <input type='text' placeholder='Mountain View, Pekingese Puppies, Spelunking...' id='input-box'>
+        <br><br>
+        <input id='submit-btn' type='submit' value='Go!' class='btn btn-primary'>
 
-      <input type='checkbox' name='search-location' ng-model='searchInMap.value'>
-      Search Only Within Map
+        <input type='checkbox' name='search-location' ng-model='searchInMap.value'>
+         Search Only Within Map
+      </div>
     </form>
 
     <hr>

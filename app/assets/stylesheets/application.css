@@ -10,9 +10,9 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= bootstrap-flaty
  *= require_tree .
  *= require_self
+ *= require_tree ../../../vendor/assets/stylesheets/
 
  */
 
@@ -21,7 +21,10 @@
  }
 
  #input-box {
-   min-width: 500px;
+   min-width: 600px;
+   min-height: 40px;
+   border-radius: 5px;
+   text-align: center;
  }
 
 #map {
@@ -30,10 +33,23 @@
   right: 0;
   top: 0px;
   display: inline-block;
+  border-radius: 2px;
 }
 
 .list-wrapper {
   width: 50%;
   display: inline-block;
   float: left;
+}
+
+.center-wrapper {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+#submit-btn {
+  margin-right: 5px;
 }

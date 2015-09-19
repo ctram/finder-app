@@ -1,5 +1,3 @@
-// TODO: search results are confined to the CURRENT location of the map
-// TODO: map re-positions itself to best showcase the results AND show results that are based on the current location of the map - how can BOTH be implemented? seems to contradict each other.
 // TODO: add separate input field for location, like how Yelp is setup
 
 var finderApp = angular.module('finderApp', []);
@@ -148,10 +146,6 @@ function findCenterOfResults (businesses) {
 function repositionMap (coordinate) {
   map.panTo(coordinate)
 }
-
-
-
-
 
 $(document).ready(function () {
   initMap();
