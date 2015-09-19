@@ -16,8 +16,11 @@ class StaticPagesController < ApplicationController
       token_secret: '9EdVIozIGN_vVRoPTak84QPKxhQ'
     })
 
-    response = client.search('San Francisco')
-    # debugger
+    if params[:query].nil?
+      response = client.search('San Francisco')
+    else
+      response = client.search(params[:query])
+    end
 
     render json: response.to_json
   end

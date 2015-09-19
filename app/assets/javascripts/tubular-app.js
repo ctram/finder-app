@@ -51,24 +51,24 @@ angular.module('finderApp', [])
     var resultsList = this;
     resultsList.results = [];
 
-    // resultsList.search = function () {
-    //   var query = $('#input-box').val();
-    //   if (query !== '') {
-    //
-    //   }
-    // }
-
     resultsList.submitSearch = function () {
-      alert('yes!');
+      var query = $('#input-box').val();
+      if (query !== '') {
+        getSearchResults(query);
+      }
     }
   });
 
 function renderResults (data) {
+  if (data === null) {
+    return;
+  }
   var businesses = data.businesses;
   var business;
   var lat;
   var long
   $list = $('#list');
+  $list.html('');
   for (var i = 0; i < businesses.length; i++) {
     business = businesses[i];
     name = business.name;
@@ -83,7 +83,7 @@ function getSearchResults (query) {
   $.ajax({
     url: '/search',
     type: 'get',
-    data: query,
+    data: {query: query},
     success: renderResults,
     error: function () {
       $('#list').html('Something went wrong with the search : [ <br><BR>Please try again!')
@@ -91,17 +91,16 @@ function getSearchResults (query) {
   });
 }
 
-getSearchResults();
-
 var map;
+
 function initMap() {
-  setTimeout(function () {
-    map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
     zoom: 8
-    });
-
-  }, 0);
+  });
 }
 
-initMap();
+$(document).ready(function () {
+  getSearchResults();
+  initMap();
+});
